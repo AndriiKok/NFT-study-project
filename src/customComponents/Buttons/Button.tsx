@@ -6,6 +6,23 @@ interface LitButtonProps extends ButtonProps<"button"> {
 }
 
 const createButtonStyles = createStyles((theme) => ({
+
+  rootStyles:{
+
+    height: "40px",
+    padding: "0 30px",
+    lineHeight: "24px",
+    fontWeight: 700,
+    "&:focus" :{
+      outline: "3px solid #DCDCDC",
+      outlineOffset: "0"
+    },
+    "&:disabled":{
+      color:"white !important",
+      opacity:0.5
+    }
+
+  },
   gradientBackground: {
     background: "linear-gradient(114.44deg, #0038F5 0%, #9F03FF 100%)",
   },
@@ -19,8 +36,7 @@ const createButtonStyles = createStyles((theme) => ({
   },
   gradientBorder: {
     border: "1px solid transparent",
-    borderImage: "linear-gradient(114.44deg, #0038F5 0%, #9F03FF 100%) 1",
-    background: "transparent",
+    background:"linear-gradient(#fff, #fff) padding-box, linear-gradient(114.44deg, #0038F5 0%, #9F03FF 100%) border-box",
   },
 }));
 
@@ -38,20 +54,8 @@ export const LitButton = (props: LitButtonProps) => {
           variant="gradient"
           gradient={graidentObj}
           radius="md"
-          styles={{
-            root: {
-              height: "40px",
-              padding: "0 30px",
-              lineHeight: "24px",
-              fontWeight: 700,
-              "&:focus" :{
-                outline: "3px solid #DCDCDC;"
-              },
-              "&:disabled":{
-                color:"white !important",
-                opacity:0.5
-              }
-            },
+          classNames={{
+            root: classes.rootStyles
           }}
         />
       );
@@ -103,7 +107,7 @@ export const LitButton = (props: LitButtonProps) => {
               },
               "&:disabled":{
                 border: "1px solid #888888 !important",
-                backgroundColor: "#FCFCFC",
+                backgroundColor: "#F0F0F0",
                 opacity:0.5
               }
             },
@@ -165,3 +169,9 @@ export const LitButton = (props: LitButtonProps) => {
   // Removing extra property
 
 };
+
+/*
+How to Create Gradient Borders with Border Radius : 
+https://nikitahl.com/gradient-border-css
+
+*/

@@ -1,6 +1,6 @@
 import { MantineGradient, MantineThemeOverride } from "@mantine/core";
 
-const linearGradients: { [key: string]: MantineGradient } = {
+export const linearGradients: { [key: string]: MantineGradient } = {
     primary: { from: "#0000EB", to: "#004BFB", deg: 108.08 },
     secondary: { from: "#FF9C00", to: "#FFDB03", deg: 108.08 },
     accent: { from: "#0038F5", to: "#9F03FF", deg: 114.44 },
@@ -195,5 +195,4 @@ const linearGradients: { [key: string]: MantineGradient } = {
     },
   };
   
-
   export default myTheme;

@@ -1,7 +1,8 @@
 import { Button, Paper } from '@mantine/core';
-import { LitButton } from './customComponents/Buttons/Button';
+import { LitButton } from './Button';
+import { Armchair } from 'tabler-icons-react';
 
-export const CompA = () => {
+export const ButtonTesting = () => {
     return (
         <div>
 
@@ -18,6 +19,7 @@ export const CompA = () => {
                 <LitButton variantType='subtle' disabled={true}>Button</LitButton>
                 <LitButton variantType='text'>Button</LitButton>
                 <LitButton variantType='text' disabled={true}>Button</LitButton>
+                <LitButton variantType='primary' leftIcon={<Armchair />}>Button</LitButton>
             </Paper>
 
 

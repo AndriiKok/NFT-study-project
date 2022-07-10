@@ -5,8 +5,9 @@ import {
   TabsProps,
 } from "@mantine/core";
 import { LitButtonTesting } from "./customComponents/Buttons/LitButtonTesting";
-import myTheme from "./theme";
-
+import myTheme from "./theme/theme";
+import { LitText } from "./customComponents/Text/LitText";
+import { Text } from '@mantine/core';
 function StyledTabs(props: TabsProps) {
   return (
     <Tabs
@@ -91,7 +92,43 @@ function App() {
 
       <ButtonTesting /> */}
 
-      <LitButtonTesting />
+{/*       <LitButtonTesting /> */}
+{/* LitTextTesting
+
+<LitText size="lg">Text Variant Large</LitText>
+<LitText size="md">Text Variant Medium</LitText>
+<LitText size="sm">Text Variant Small</LitText>
+<LitText size="xs">Text Variant Extra Small</LitText>
+
+<LitText size="lg" typographyVariant="display-regular">Text Variant Large</LitText>
+<LitText size="md" typographyVariant="display-regular">Text Variant Medium</LitText>
+<LitText size="sm" typographyVariant="display-regular">Text Variant Small</LitText>
+
+<LitText size="lg" typographyVariant="display-bold">Text Variant Large</LitText>
+<LitText size="md" typographyVariant="display-bold">Text Variant Medium</LitText>
+<LitText size="sm" typographyVariant="display-bold">Text Variant Small</LitText>
+
+<LitText size="lg" typographyVariant="link">Link Variant Large</LitText>
+<LitText size="md" typographyVariant="link">Link Variant Medium</LitText>
+<LitText size="sm" typographyVariant="link">Link Variant Small</LitText>
+<LitText size="xs" typographyVariant="link">Link Variant Extra Small</LitText>
+
+<LitText size="lg"  typographyVariant="text" gradientType="primary" >Link Variant Large</LitText>
+<LitText size="md" typographyVariant="display-bold" gradientType="accent" >Text Variant Medium</LitText>
+<LitText size="sm" typographyVariant="display-bold" gradientType="secondary" >Text Variant Small</LitText>
+<Text
+      component="span"
+      align="center"
+      variant="gradient"
+      gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}
+      size="xl"
+      weight={700}
+      style={{ fontFamily: 'Greycliff CF, sans-serif' }}
+    >
+      Indigo cyan gradient
+    </Text> */}
+
+
     </MantineProvider>
   );
 }
