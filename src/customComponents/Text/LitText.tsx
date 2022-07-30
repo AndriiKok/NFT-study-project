@@ -1,4 +1,4 @@
-import { Text, CSSObject } from "@mantine/core";
+import { Text, CSSObject, MantineColor } from "@mantine/core";
 import litTypography from "../../theme/litTypography";
 import LitTypography, { ScreenType, SizeVariants, TypographyVariants } from "../../theme/litTypography";
 import { linearGradients } from "../../theme/theme";
@@ -10,6 +10,7 @@ type LitTextProps = {
   transformType?: "capitalize" | "uppercase" | "lowercase" | "none";
   gradientType?: "primary" | "secondary" | "accent";
   componentType?: "block" | "inline";
+  color?: MantineColor;
   children?: JSX.Element | string;
 };
 
@@ -22,7 +23,7 @@ export const LitText = (props: LitTextProps) => {
   let cssProps = getCSSProps(props.typographyVariant, props?.size, props.screenType);
 
   return (
-    <Text gradient={gradient} component={componentType} sx={cssProps} variant={variantType}  >
+    <Text gradient={gradient} component={componentType} sx={cssProps} color={props.color} variant={variantType}  >
       {props.children}
     </Text>
   );
@@ -31,3 +32,9 @@ export const LitText = (props: LitTextProps) => {
 const getCSSProps = (typographyVariant: TypographyVariants = "text", size: SizeVariants = "md", screenType: ScreenType = "desktop"): CSSObject => {
   return litTypography[screenType][typographyVariant][size];
 };
+/*
+TODO : 
+- Need to support alignment in the LitText
+
+
+*/

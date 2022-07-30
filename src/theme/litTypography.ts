@@ -184,9 +184,8 @@ const mobileTypography = {
     },
     md: {
       fontSize: "16px",
-      lineHeight: "20px",
-      letterSpacing: "0.75px",
-      fontWeight: 500
+      lineHeight: "24px",
+      fontWeight: 700
     },
     sm: {
       fontSize: "14px",
