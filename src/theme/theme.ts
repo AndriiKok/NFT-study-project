@@ -167,7 +167,7 @@ export const linearGradients: { [key: string]: MantineGradient } = {
         "#2A2A2A",
       ],
     },
-    defaultRadius: "sm",
+    defaultRadius: "md",
     fontFamily: "Epilogue, sans-serif",
     fontFamilyMonospace: "Epilogue, sans-serif",
     fontSizes: { lg: 24, md: 18, sm: 16, xs: 14 },
