@@ -33,7 +33,7 @@ export const LitTextInput = (props: TextInputProps) => {
   }
 
   const { classes, cx, theme } = useStyles({
-    floating: props.value?.trim().length !== 0 || focused,
+    floating: ( props.value && props.value?.trim().length >= 0 )  || focused,
     disabled: props.disabled ? props.disabled : false,
     inputStatus: props.status ? props.status : "DEFAULT",
   });

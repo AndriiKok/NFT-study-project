@@ -1,5 +1,5 @@
 import { Button, createStyles } from "@mantine/core";
-import React from "react";
+import React, { MouseEventHandler } from "react";
 
 interface ButtonProps {
   variant: "primary" | "secondary" | "subtle" | "text";
@@ -10,6 +10,7 @@ interface ButtonProps {
   children: JSX.Element | string;
   type?: 'submit' | 'button' | 'reset';
   leftIcon?: React.ReactNode;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const LitButton = (props: ButtonProps) => {
@@ -19,11 +20,12 @@ export const LitButton = (props: ButtonProps) => {
     <Button
       variant="default"
       classNames={{
-        root: cx(classes.text, classes[props.variant]),
+        root: cx(classes.common, classes[props.variant]),
       }}
       leftIcon={props.leftIcon}
       disabled={props.disabled}
       loading={props.loading}
+      onClick={props.onClick}
     >
       {props.children}
     </Button>
