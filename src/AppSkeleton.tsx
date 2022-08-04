@@ -15,6 +15,8 @@ return (
     styles={{
       main: {
         background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : litColors.offWhite,
+        paddingLeft:0,
+        paddingRight:"0 !important"
       },
     }}
     navbarOffsetBreakpoint="sm"
@@ -23,10 +25,10 @@ return (
       <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }} sx={{justifyContent: "space-around"}}>
 
           <Stack spacing="xl" align="center">
-            <LitText componentType='link' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com"  >About OpenArt</LitText>
-            <LitText componentType='block' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com" >Blog</LitText>
-            <LitText componentType='block' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com" >Help</LitText>
-            <LitText componentType='block' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com" >Contact</LitText>
+            <LitText component='a' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com"  >About OpenArt</LitText>
+            <LitText component='a' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com" >Blog</LitText>
+            <LitText component='a' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com" >Help</LitText>
+            <LitText component='a' screenType='desktop' size='sm' typographyVariant='display-bold' href="https://google.com" >Contact</LitText>
           </Stack>
         <LitButton fullWidth={true} variant="primary" size='large' ><LitText color="white" typographyVariant='link'  screenType='mobile' size='lg' >Connect wallet</LitText></LitButton>
       </Navbar>

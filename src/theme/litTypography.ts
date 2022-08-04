@@ -153,25 +153,21 @@ const mobileTypography = {
     lg: {
       fontSize: "20px",
       lineHeight: "28px",
-      letterSpacing: "0.75px",
       fontWeight: 400,
     },
     md: {
       fontSize: "16px",
       lineHeight: "22px",
-      letterSpacing: "0.75px",
       fontWeight: 400,
     },
     sm: {
       fontSize: "14px",
       lineHeight: "20x",
-      letterSpacing: "0.75px",
       fontWeight: 400,
     },
     xs: {
       fontSize: "13px",
       lineHeight: "20px",
-      letterSpacing: "0.75px",
       fontWeight: 500
     }
   },

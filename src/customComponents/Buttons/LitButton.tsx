@@ -1,23 +1,27 @@
-import { Button, createStyles } from "@mantine/core";
+import { Button, ButtonProps, createPolymorphicComponent, createStyles, useComponentDefaultProps } from "@mantine/core";
 import React, { MouseEventHandler } from "react";
 
-interface ButtonProps {
+interface LitButtonProps extends Omit<ButtonProps,"size" | "variant"> {
   variant: "primary" | "secondary" | "subtle" | "text";
   size?: "medium" | "large";
   disabled?: boolean;
-  fullWidth?: boolean;
   loading?:boolean;
-  children: JSX.Element | string;
   type?: 'submit' | 'button' | 'reset';
-  leftIcon?: React.ReactNode;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const LitButton = (props: ButtonProps) => {
+const defaultProps: Partial<LitButtonProps> = {
+  variant: "primary",
+};
+
+const _LitButton = (props: LitButtonProps) => {
+
+  const { variant, size, disabled, 
+     loading, type,  leftIcon,children, ...others } = useComponentDefaultProps('LitText', defaultProps, props);
   const { classes, cx } = createButtonStyles(props?.size);
 
   return (
     <Button
+    {...others}
       variant="default"
       classNames={{
         root: cx(classes.common, classes[props.variant]),
@@ -25,7 +29,7 @@ export const LitButton = (props: ButtonProps) => {
       leftIcon={props.leftIcon}
       disabled={props.disabled}
       loading={props.loading}
-      onClick={props.onClick}
+
     >
       {props.children}
     </Button>
@@ -132,6 +136,8 @@ const createButtonStyles = createStyles((theme, size?: "medium" | "large" | unde
   },
 }));
 
+export const LitButton = createPolymorphicComponent<'button', LitButtonProps>(_LitButton);
+
 
 /*
   Confuion : whether to keep the height of the button as static or make it 
@@ -148,18 +154,4 @@ const createButtonStyles = createStyles((theme, size?: "medium" | "large" | unde
       color: "green !important",
       background: "none",
     },
-
-<Button loading={true}>Mantine Core Button</Button>
-    <LitButton variantType='primary' loading={true}>Button</LitButton>
-    <LitButton variantType='primary' loading={true}>Button</LitButton>
-    <LitButton variantType='primary'>Button</LitButton>
-    <LitButton variantType='primary' disabled={true}>Button</LitButton>
-    <LitButton variantType='secondary'>Button</LitButton>
-    <LitButton variantType='secondary' disabled={true}>Button</LitButton>
-    <LitButton variantType='subtle'>Button</LitButton>
-    <LitButton variantType='subtle' disabled={true}>Button</LitButton>
-    <LitButton variantType='text'>Button</LitButton>
-    <LitButton variantType='text' disabled={true}>Button</LitButton>
-    <LitButton variantType='primary' leftIcon={<Armchair />}>Button</LitButton>
-
 */

@@ -1,33 +1,36 @@
-import { Text, CSSObject, MantineColor } from "@mantine/core";
+import { Text, CSSObject, MantineColor, TextProps, createPolymorphicComponent } from "@mantine/core";
 import litTypography from "../../theme/litTypography";
-import LitTypography, { ScreenType, SizeVariants, TypographyVariants } from "../../theme/litTypography";
+import { ScreenType, SizeVariants, TypographyVariants } from "../../theme/litTypography";
 import { linearGradients } from "../../theme/theme";
-import { DefaultProps } from '@mantine/styles';
+import { useComponentDefaultProps } from '@mantine/core';
 
-interface LitTextProps extends DefaultProps{
+interface LitTextProps extends TextProps {
   size?: SizeVariants;
   typographyVariant?: TypographyVariants;
   screenType?: ScreenType;
-  transformType?: "capitalize" | "uppercase" | "lowercase" | "none";
   gradientType?: "primary" | "secondary" | "accent";
-  componentType?: "block" | "inline" | "link";
   color?: MantineColor;
-  children?: JSX.Element | string;
   href?: string;
 };
 
-export const LitText = (props: LitTextProps) => {
+const defaultProps: Partial<LitTextProps> = {
+  size: "md",
+};
 
-  const gradient = props?.gradientType ? linearGradients[props?.gradientType] : undefined;
-  const componentType  = props.componentType ? {"block": "div", "inline" : "span", "link" : "a"}[props?.componentType] : "span";
-  const variantType = props.gradientType ? "gradient" : "text";
+const _LitText = (props: LitTextProps) => {
 
-  let cssProps = getCSSProps(props.typographyVariant, props?.size, props.screenType);
+  const { size, typographyVariant, screenType, 
+     gradientType,color,children, ...others } = useComponentDefaultProps('LitText', defaultProps, props);
+
+  const gradient = gradientType ? linearGradients[gradientType] : undefined;
+  const variantType = gradientType ? "gradient" : "text";
+
+  let cssProps = getCSSProps(typographyVariant, size, screenType);
 
 
   return (
-    <Text gradient={gradient} href={props.href} component={componentType as any} sx={cssProps} color={props.color} variant={variantType}  >
-      {props.children}
+    <Text {...others} gradient={gradient} sx={cssProps} color={color} variant={variantType}  >
+      {children}
     </Text>
   );
 };
@@ -35,6 +38,8 @@ export const LitText = (props: LitTextProps) => {
 const getCSSProps = (typographyVariant: TypographyVariants = "text", size: SizeVariants = "md", screenType: ScreenType = "desktop"): CSSObject => {
   return litTypography[screenType][typographyVariant][size];
 };
+
+export const LitText = createPolymorphicComponent<"div", LitTextProps>(_LitText);
 /*
 TODO : 
 - Need to support alignment in the LitText
