@@ -1,4 +1,4 @@
-import { Box, createStyles, Grid, Group, Stack, TextInput, UnstyledButton } from '@mantine/core'
+import { Box, createStyles, Grid, Group, Indicator, Stack, TextInput, UnstyledButton } from '@mantine/core'
 import React, { useState } from 'react'
 import { LitText } from '../../customComponents/Text/LitText'
 import { litColors } from '../../theme/theme'
@@ -6,7 +6,7 @@ import { Text } from '@mantine/core';
 import { LitTextInput } from '../../customComponents/Inputs/LitTextInput';
 import { Search, X } from 'tabler-icons-react';
 import { LitButton } from '../../customComponents/Buttons/LitButton';
-import { NFTItem } from './NFTItem';
+import { FreshNFTItem, OnGoingBidNFTItem, SoldNFTItem } from './NFTItem';
 
 export const HomeIndex = () => {
     return (
@@ -23,10 +23,21 @@ export const HomeIndex = () => {
             </Grid>
             <Grid sx={{ backgroundColor: litColors.bg }} columns={4} px="16px" pt="25px" gutter={0}>
                 <Grid.Col span={4} >
-                    <NFTItem isSold={false} reservePriceEth='1.50 ETH' reservePriceDollar='2,683.7' />
+                    <FreshNFTItem reservePriceEth='1.50 ETH' reservePriceDollar='2,683.7' status={'FRESH'} nftImgUrl={''} isLiked={false} creator={{ firstName: "Pawel", lastName: "Czerwinski", designation: "Creator", status: "ONLINE", imgUrl: "asd" }} />
                 </Grid.Col>
-                <Grid.Col span={4} style={{justifyContent: "space-between"}} >
-                    <LitText> Live auctions</LitText>
+                <Grid.Col span={4} style={{ justifyContent: "space-between", display: "flex", alignItems: "center" }} mt="85px" >
+                    <LitText color={litColors.titleActive} screenType="mobile" typographyVariant='display-bold' size='sm' > <Box style={{ backgroundColor: litColors.error, width: "12px", height: "12px", borderRadius: "50%", display: "inline-block" }} mr="7px" ></Box>Live auctions</LitText>
+                    <LitButton variant='subtle' size='medium'><LitText color={litColors.label} screenType="mobile" typographyVariant='text' size='md' >View all</LitText></LitButton>
+                </Grid.Col>
+                <Grid.Col span={4} mt="20px" sx={{
+                    gap: "40px",
+                    display: "flex",
+                    flexDirection: "column"
+                }}>
+                    <SoldNFTItem soldPrice="2.00 ETH" status={'SOLD'} nftImgUrl={''} isLiked={false} creator={{ firstName: "Pawel", lastName: "Czerwinski", designation: "Creator", status: "ONLINE", imgUrl: "asd" }} />
+                    <SoldNFTItem soldPrice="2.00 ETH" status={'SOLD'} nftImgUrl={''} isLiked={false} creator={{ firstName: "Pawel", lastName: "Czerwinski", designation: "Creator", status: "ONLINE", imgUrl: "asd" }} />
+                    <SoldNFTItem soldPrice="2.00 ETH" status={'SOLD'} nftImgUrl={''} isLiked={false} creator={{ firstName: "Pawel", lastName: "Czerwinski", designation: "Creator", status: "ONLINE", imgUrl: "asd" }} />
+                    <OnGoingBidNFTItem status={'ONGOING-BID'} currentBidPrice={'2.00 ETH'} EndingIn={'27m 30s'} nftImgUrl={''} isLiked={false} creator={{ firstName: "Pawel", lastName: "Czerwinski", designation: "Creator", status: "ONLINE", imgUrl: "asd" }} />
                 </Grid.Col>
 
             </Grid>
