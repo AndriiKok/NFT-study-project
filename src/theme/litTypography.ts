@@ -1,18 +1,21 @@
 import { CSSObject } from "@mantine/core";
 
-export type TypographyVariants = "text" | "link" | "display-regular" | "display-bold";
+export type TypographyVariants =
+  | "text"
+  | "link"
+  | "display-regular"
+  | "display-bold";
 export type SizeVariants = "lg" | "md" | "sm" | "xs";
 export type ScreenType = "desktop" | "mobile";
 
 type LitTypography = {
-  lg: CSSObject,
-  md: CSSObject
-  sm: CSSObject
-  xs?: CSSObject
-}
+  lg: CSSObject;
+  md: CSSObject;
+  sm: CSSObject;
+  xs?: CSSObject;
+};
 
-const desktopTypography : {[key in TypographyVariants] : LitTypography} = {
-
+const desktopTypography: { [key in TypographyVariants]: LitTypography } = {
   "display-regular": {
     lg: {
       fontSize: "64px",
@@ -53,7 +56,7 @@ const desktopTypography : {[key in TypographyVariants] : LitTypography} = {
       fontWeight: 700,
     },
   },
-  "text": {
+  text: {
     lg: {
       fontSize: "24px",
       lineHeight: "36px",
@@ -70,16 +73,16 @@ const desktopTypography : {[key in TypographyVariants] : LitTypography} = {
       fontSize: "16px",
       lineHeight: "24px",
       letterSpacing: "0.75px",
-      fontWeight: 500
+      fontWeight: 500,
     },
     xs: {
       fontSize: "14px",
       lineHeight: "20px",
       letterSpacing: "0.75px",
-      fontWeight: 500
-    }
+      fontWeight: 500,
+    },
   },
-  "link": {
+  link: {
     lg: {
       fontSize: "24px",
       lineHeight: "32px",
@@ -103,12 +106,11 @@ const desktopTypography : {[key in TypographyVariants] : LitTypography} = {
       lineHeight: "20px",
       letterSpacing: "0.75px",
       fontWeight: 700,
-    }
-  }
+    },
+  },
 };
 
 const mobileTypography = {
-
   "display-regular": {
     lg: {
       fontSize: "40px",
@@ -149,7 +151,7 @@ const mobileTypography = {
       fontWeight: 700,
     },
   },
-  "text": {
+  text: {
     lg: {
       fontSize: "20px",
       lineHeight: "28px",
@@ -168,10 +170,10 @@ const mobileTypography = {
     xs: {
       fontSize: "13px",
       lineHeight: "20px",
-      fontWeight: 500
-    }
+      fontWeight: 500,
+    },
   },
-  "link": {
+  link: {
     lg: {
       fontSize: "20px",
       lineHeight: "28px",
@@ -181,7 +183,7 @@ const mobileTypography = {
     md: {
       fontSize: "16px",
       lineHeight: "24px",
-      fontWeight: 700
+      fontWeight: 700,
     },
     sm: {
       fontSize: "14px",
@@ -194,13 +196,13 @@ const mobileTypography = {
       lineHeight: "20px",
       letterSpacing: "0.75px",
       fontWeight: 700,
-    }
-  }
+    },
+  },
 };
 
-const litTypography : {[key in ScreenType] : any} = {
-  "desktop" : desktopTypography,
-  "mobile" : mobileTypography
-}
+const litTypography: { [key in ScreenType]: any } = {
+  desktop: desktopTypography,
+  mobile: mobileTypography,
+};
 
 export default litTypography;

@@ -6,7 +6,10 @@ import { Heart } from "tabler-icons-react";
 import litTypography from "../../theme/litTypography";
 import { LitButton } from "../../customComponents/Buttons/LitButton";
 import { ReactNode } from "react";
-import { ProfileProps, Profile } from "../../customComponents/OpenArtTemplate/Profile";
+import {
+  ProfileProps,
+  Profile,
+} from "../../customComponents/OpenArtTemplate/Profile";
 
 interface NFTItemProps {
   nftImgUrl: string;
@@ -32,102 +35,160 @@ interface OnGoingBidNFTItemProps extends Omit<NFTItemProps, "children"> {
   EndingIn: string;
 }
 
-
-
 export const SoldNFTItem = (props: SoldNFTItemProps) => {
-
-  return (<NFTItem {...props}>
-    <Box sx={{
-      backgroundColor: "white",
-      height: "64px",
-      borderRadius: "50px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center"
-    }}>
-      <LitText component="span" color={litColors.label} size="lg" typographyVariant="text" screenType="mobile">
-        Sold For{" "}
-        <LitText component="span" color={litColors.label} size="sm" typographyVariant="display-bold" screenType="mobile">
-          2.00 ETH
+  return (
+    <NFTItem {...props}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          height: "64px",
+          borderRadius: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <LitText
+          component="span"
+          color={litColors.label}
+          size="lg"
+          typographyVariant="text"
+          screenType="mobile"
+        >
+          Sold For{" "}
+          <LitText
+            component="span"
+            color={litColors.label}
+            size="sm"
+            typographyVariant="display-bold"
+            screenType="mobile"
+          >
+            2.00 ETH
+          </LitText>
         </LitText>
-      </LitText>
-    </Box>
-
-  </NFTItem>);
-}
+      </Box>
+    </NFTItem>
+  );
+};
 
 export const FreshNFTItem = (props: FreshNFTItemProps) => {
-
   return (
-    <NFTItem {...props} >
+    <NFTItem {...props}>
       <>
-        <LitText mt="20px" color={litColors.titleActive} size="md" screenType="mobile" typographyVariant="text">
+        <LitText
+          mt="20px"
+          color={litColors.titleActive}
+          size="md"
+          screenType="mobile"
+          typographyVariant="text"
+        >
           Reserve Price{" "}
-          <LitText component="span" size="sm" color={litColors.titleActive} screenType="mobile" typographyVariant="display-bold">
+          <LitText
+            component="span"
+            size="sm"
+            color={litColors.titleActive}
+            screenType="mobile"
+            typographyVariant="display-bold"
+          >
             {props.reservePriceEth}
           </LitText>{" "}
-          <LitText component="span" typographyVariant="link" screenType="mobile" size="md" color={litColors.placeholder}>
+          <LitText
+            component="span"
+            typographyVariant="link"
+            screenType="mobile"
+            size="md"
+            color={litColors.placeholder}
+          >
             ${props.reservePriceDollar}{" "}
           </LitText>
         </LitText>
         <LitButton mt="15px" variant="primary" size="large" fullWidth={true}>
-          <LitText screenType="mobile" typographyVariant="link" size="lg" color={litColors.offWhite}>
+          <LitText
+            screenType="mobile"
+            typographyVariant="link"
+            size="lg"
+            color={litColors.offWhite}
+          >
             Place a bid
           </LitText>
         </LitButton>
         <LitButton mt="15px" variant="secondary" size="large" fullWidth={true}>
-          <LitText screenType="mobile" typographyVariant="link" size="lg" color={litColors.titleActive}>
+          <LitText
+            screenType="mobile"
+            typographyVariant="link"
+            size="lg"
+            color={litColors.titleActive}
+          >
             View artwork
           </LitText>
         </LitButton>
       </>
     </NFTItem>
-
   );
-
-}
+};
 
 export const OnGoingBidNFTItem = (props: OnGoingBidNFTItemProps) => {
-
   return (
-    <NFTItem {...props} >
-      <Box sx={{
-        backgroundColor: "white",
-        height: "64px",
-        borderRadius: "50px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
+    <NFTItem {...props}>
+      <Box
+        sx={{
+          backgroundColor: "white",
+          height: "64px",
+          borderRadius: "50px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <Box>
-          <div  />
+          <div />
         </Box>
-
       </Box>
-
     </NFTItem>
-
   );
-
-}
-
-
-
+};
 
 const NFTItem = (props: NFTItemProps) => {
-
   return (
     <>
       <div>
-        <Paper p="md" radius={32} sx={{ filter: "drop-shadow(0px 10px 24px rgba(0, 0, 0, 0.08))" }} mb="12px" >
+        <Paper
+          p="md"
+          radius={32}
+          sx={{ filter: "drop-shadow(0px 10px 24px rgba(0, 0, 0, 0.08))" }}
+          mb="12px"
+        >
           <Image src="SilentWave.png" alt="Silent Wave Image" />
-          <LitText mt="12px" color={litColors.titleActive} screenType="mobile" typographyVariant="display-bold" size="sm">
+          <LitText
+            mt="12px"
+            color={litColors.titleActive}
+            screenType="mobile"
+            typographyVariant="display-bold"
+            size="sm"
+          >
             Silent Wave
           </LitText>
-          <Box sx={{ display: "flex", justifyContent: "space-between", marginTop: "3px" }}>
-            <Profile firstName="Pawel" lastName="Czerwinski" status="ONLINE" imgUrl="" designation="Creator" />
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              marginTop: "3px",
+            }}
+          >
+            <Profile
+              firstName="Pawel"
+              lastName="Czerwinski"
+              status="ONLINE"
+              imgUrl=""
+              designation="Creator"
+            />
             <ActionIcon variant="transparent">
-              <Heart size={24} strokeWidth={2} color={litColors.placeholder} style={{ alignSelf: "center" }} />
+              <Heart
+                size={24}
+                strokeWidth={2}
+                color={litColors.placeholder}
+                style={{ alignSelf: "center" }}
+              />
             </ActionIcon>
           </Box>
         </Paper>
@@ -136,4 +197,3 @@ const NFTItem = (props: NFTItemProps) => {
     </>
   );
 };
-

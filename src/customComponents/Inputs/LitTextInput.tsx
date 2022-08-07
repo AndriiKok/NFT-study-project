@@ -1,4 +1,9 @@
-import { createStyles, MantineTheme, TextInput, UnstyledButton } from "@mantine/core";
+import {
+  createStyles,
+  MantineTheme,
+  TextInput,
+  UnstyledButton,
+} from "@mantine/core";
 import { LitText } from "../Text/LitText";
 import { X } from "tabler-icons-react";
 import { ChangeEventHandler, ReactNode, useRef, useState } from "react";
@@ -16,13 +21,12 @@ interface TextInputProps {
   successMsg?: string;
   errorMsg?: string;
   status?: "DEFAULT" | "SUCCESS" | "ERROR";
-  resetHandler? : Function;
+  resetHandler?: Function;
 }
 
 export const LitTextInput = (props: TextInputProps) => {
   const [focused, setFocused] = useState(false);
   let description;
-
 
   if (props.status == "ERROR") {
     description = props?.errorMsg;
@@ -33,23 +37,36 @@ export const LitTextInput = (props: TextInputProps) => {
   }
 
   const { classes, cx, theme } = useStyles({
-    floating: ( props.value && props.value?.trim().length >= 0 )  || focused,
+    floating: (props.value && props.value?.trim().length >= 0) || focused,
     disabled: props.disabled ? props.disabled : false,
     inputStatus: props.status ? props.status : "DEFAULT",
   });
 
   return (
     <TextInput
-    
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       label={
-        <LitText screenType="desktop" color={getDescColor(theme, props.status ? props.status : "DEFAULT")} size="xs" typographyVariant="text">
+        <LitText
+          screenType="desktop"
+          color={getDescColor(theme, props.status ? props.status : "DEFAULT")}
+          size="xs"
+          typographyVariant="text"
+        >
           {props?.label}
         </LitText>
       }
       rightSection={
-        <UnstyledButton onClick={() => { props.resetHandler && props.resetHandler("") }}sx={{ display: `${props.value && props.value?.trim().length >= 0 ? "block" : "none"}` }}>
+        <UnstyledButton
+          onClick={() => {
+            props.resetHandler && props.resetHandler("");
+          }}
+          sx={{
+            display: `${
+              props.value && props.value?.trim().length >= 0 ? "block" : "none"
+            }`,
+          }}
+        >
           <X size={24} strokeWidth={2} color={"black"} />
         </UnstyledButton>
       }
@@ -66,7 +83,18 @@ export const LitTextInput = (props: TextInputProps) => {
 };
 
 const useStyles = createStyles(
-  (theme, { floating, disabled, inputStatus }: { floating: boolean; disabled?: boolean; inputStatus: "DEFAULT" | "SUCCESS" | "ERROR" }) => ({
+  (
+    theme,
+    {
+      floating,
+      disabled,
+      inputStatus,
+    }: {
+      floating: boolean;
+      disabled?: boolean;
+      inputStatus: "DEFAULT" | "SUCCESS" | "ERROR";
+    }
+  ) => ({
     root: {
       position: "relative",
       borderRadius: theme.radius.md,
@@ -115,7 +143,10 @@ const useStyles = createStyles(
   })
 );
 
-const getDescColor = (theme: MantineTheme, status: "DEFAULT" | "SUCCESS" | "ERROR") => {
+const getDescColor = (
+  theme: MantineTheme,
+  status: "DEFAULT" | "SUCCESS" | "ERROR"
+) => {
   if (status == "ERROR") {
     return theme.other.colors.error;
   } else if (status == "SUCCESS") {
