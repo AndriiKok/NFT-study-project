@@ -16,6 +16,7 @@ import { LitButton } from "./customComponents/Buttons/LitButton";
 import { LitText } from "./customComponents/Text/LitText";
 import { HomeIndex } from "./Pages/Home/HomeIndex";
 import { litColors } from "./theme/theme";
+import { Routes, Route, Link } from "react-router-dom";
 
 export const AppSkeleton = () => {
   const theme = useMantineTheme();
@@ -124,7 +125,9 @@ export const AppSkeleton = () => {
         </Header>
       }
     >
-      <HomeIndex />
+      <Routes>
+        <Route path="/" element={<HomeIndex />} />
+      </Routes>
     </AppShell>
   );
 };
