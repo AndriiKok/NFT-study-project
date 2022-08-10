@@ -6,6 +6,7 @@ export const linearGradients: { [key: string]: MantineGradient } = {
   accent: { from: "#0038F5", to: "#9F03FF", deg: 114.44 },
 };
 
+
 export const litColors = {
   titleActive: "#222222",
   body: "#333333",

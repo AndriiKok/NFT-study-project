@@ -3,15 +3,13 @@ import { Image } from "@mantine/core";
 import { LitText } from "../../customComponents/Text/LitText";
 import { litColors } from "../../theme/theme";
 import { Heart } from "tabler-icons-react";
-import litTypography from "../../theme/litTypography";
 import { LitButton } from "../../customComponents/Buttons/LitButton";
 import { ReactNode } from "react";
-import {
-  ProfileProps,
-  Profile,
-} from "../../customComponents/OpenArtTemplate/Profile";
+import { ProfileProps, Profile } from "../../customComponents/OpenArtTemplate/Profile";
+import { StatusCircle } from "../../customComponents/OpenArtTemplate/StatusCircle";
 
 interface NFTItemProps {
+  nftName: string;
   nftImgUrl: string;
   isLiked: boolean;
   creator: ProfileProps;
@@ -46,23 +44,13 @@ export const SoldNFTItem = (props: SoldNFTItemProps) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          border: "1px solid #333333",
+          boxShadow: "0px 8px 24px rgba(69, 69, 69, 0.06)"
         }}
       >
-        <LitText
-          component="span"
-          color={litColors.label}
-          size="lg"
-          typographyVariant="text"
-          screenType="mobile"
-        >
+        <LitText component="span" color={litColors.label} size="lg" typographyVariant="text" screenType="mobile">
           Sold For{" "}
-          <LitText
-            component="span"
-            color={litColors.label}
-            size="sm"
-            typographyVariant="display-bold"
-            screenType="mobile"
-          >
+          <LitText component="span" color={litColors.label} size="sm" typographyVariant="display-bold" screenType="mobile">
             2.00 ETH
           </LitText>
         </LitText>
@@ -75,50 +63,22 @@ export const FreshNFTItem = (props: FreshNFTItemProps) => {
   return (
     <NFTItem {...props}>
       <>
-        <LitText
-          mt="20px"
-          color={litColors.titleActive}
-          size="md"
-          screenType="mobile"
-          typographyVariant="text"
-        >
+        <LitText mt="20px" color={litColors.titleActive} size="md" screenType="mobile" typographyVariant="text">
           Reserve Price{" "}
-          <LitText
-            component="span"
-            size="sm"
-            color={litColors.titleActive}
-            screenType="mobile"
-            typographyVariant="display-bold"
-          >
+          <LitText component="span" size="sm" color={litColors.titleActive} screenType="mobile" typographyVariant="display-bold">
             {props.reservePriceEth}
           </LitText>{" "}
-          <LitText
-            component="span"
-            typographyVariant="link"
-            screenType="mobile"
-            size="md"
-            color={litColors.placeholder}
-          >
+          <LitText component="span" typographyVariant="link" screenType="mobile" size="md" color={litColors.placeholder}>
             ${props.reservePriceDollar}{" "}
           </LitText>
         </LitText>
         <LitButton mt="15px" variant="primary" size="large" fullWidth={true}>
-          <LitText
-            screenType="mobile"
-            typographyVariant="link"
-            size="lg"
-            color={litColors.offWhite}
-          >
+          <LitText screenType="mobile" typographyVariant="link" size="lg" color={litColors.offWhite}>
             Place a bid
           </LitText>
         </LitButton>
         <LitButton mt="15px" variant="secondary" size="large" fullWidth={true}>
-          <LitText
-            screenType="mobile"
-            typographyVariant="link"
-            size="lg"
-            color={litColors.titleActive}
-          >
+          <LitText screenType="mobile" typographyVariant="link" size="lg" color={litColors.titleActive}>
             View artwork
           </LitText>
         </LitButton>
@@ -137,11 +97,27 @@ export const OnGoingBidNFTItem = (props: OnGoingBidNFTItemProps) => {
           borderRadius: "50px",
           display: "flex",
           alignItems: "center",
-          justifyContent: "center",
+          justifyContent: "space-between",
+          padding: "0px 40px",
+          border: "1px solid #333333",
+          boxShadow: "0px 8px 24px rgba(69, 69, 69, 0.06)"
         }}
       >
         <Box>
-          <div />
+          <LitText component="div" screenType="mobile" typographyVariant="text" size="md" color={litColors.label}>
+            <StatusCircle width="7px" ml="-13px" color={litColors.success} /> Current bid
+          </LitText>
+          <LitText component="div" screenType="mobile" typographyVariant="link" size="lg" color={litColors.titleActive}>
+            {props.currentBidPrice}
+          </LitText>
+        </Box>
+        <Box>
+          <LitText component="div" screenType="mobile" typographyVariant="text" size="md" color={litColors.label}>
+            Ending in
+          </LitText>
+          <LitText component="div" screenType="mobile" typographyVariant="link" size="lg" color={litColors.titleActive}>
+            {props.EndingIn}
+          </LitText>
         </Box>
       </Box>
     </NFTItem>
@@ -152,21 +128,10 @@ const NFTItem = (props: NFTItemProps) => {
   return (
     <>
       <div>
-        <Paper
-          p="md"
-          radius={32}
-          sx={{ filter: "drop-shadow(0px 10px 24px rgba(0, 0, 0, 0.08))" }}
-          mb="12px"
-        >
-          <Image src="SilentWave.png" alt="Silent Wave Image" />
-          <LitText
-            mt="12px"
-            color={litColors.titleActive}
-            screenType="mobile"
-            typographyVariant="display-bold"
-            size="sm"
-          >
-            Silent Wave
+        <Paper p="md" radius={32} sx={{ filter: "drop-shadow(0px 10px 24px rgba(0, 0, 0, 0.08))" }} mb="12px">
+          <Image src={props.nftImgUrl} alt="Silent Wave Image" />
+          <LitText mt="12px" color={litColors.titleActive} screenType="mobile" typographyVariant="display-bold" size="sm">
+            {props.nftName}
           </LitText>
           <Box
             sx={{
@@ -175,20 +140,9 @@ const NFTItem = (props: NFTItemProps) => {
               marginTop: "3px",
             }}
           >
-            <Profile
-              firstName="Pawel"
-              lastName="Czerwinski"
-              status="ONLINE"
-              imgUrl=""
-              designation="Creator"
-            />
+            <Profile firstName="Pawel" lastName="Czerwinski" status="ONLINE" imgUrl="" designation="Creator" />
             <ActionIcon variant="transparent">
-              <Heart
-                size={24}
-                strokeWidth={2}
-                color={litColors.placeholder}
-                style={{ alignSelf: "center" }}
-              />
+              <Heart size={24} strokeWidth={2} color={litColors.placeholder} style={{ alignSelf: "center" }} />
             </ActionIcon>
           </Box>
         </Paper>

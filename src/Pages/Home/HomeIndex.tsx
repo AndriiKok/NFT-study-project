@@ -1,76 +1,20 @@
-import {
-  Box,
-  createStyles,
-  Grid,
-  Group,
-  Indicator,
-  Stack,
-  TextInput,
-  UnstyledButton,
-} from "@mantine/core";
+import { ActionIcon, Box, createStyles, Grid, Group, Indicator, Stack, TextInput, UnstyledButton } from "@mantine/core";
 import React, { useState } from "react";
 import { LitText } from "../../customComponents/Text/LitText";
 import { litColors } from "../../theme/theme";
-import { Text } from "@mantine/core";
-import { LitTextInput } from "../../customComponents/Inputs/LitTextInput";
-import { Search, X } from "tabler-icons-react";
+import { ArrowNarrowLeft, ArrowNarrowRight, Search, X } from "tabler-icons-react";
 import { LitButton } from "../../customComponents/Buttons/LitButton";
 import { FreshNFTItem, OnGoingBidNFTItem, SoldNFTItem } from "./NFTItem";
+import { StatusCircle } from "../../customComponents/OpenArtTemplate/StatusCircle";
+import { Carousel, Embla } from "@mantine/carousel";
+import { HotBids } from "./HotBids";
+import { HotCollection } from "./HotCollection";
 
 export const HomeIndex = () => {
-  return (
-    <>
-      <Grid columns={4} mr="0" gutter={0} px="16px">
-        <Grid.Col span={4}>
-          <LitText
-            mb={"4px"}
-            align="center"
-            screenType="desktop"
-            component="div"
-            typographyVariant="link"
-            size="md"
-            color={litColors.label}
-          >
-            Discover, collect, and sell
-          </LitText>
-          <LitText
-            screenType="desktop"
-            align="center"
-            component="div"
-            typographyVariant="display-bold"
-            size="sm"
-            color={litColors.titleActive}
-          >
-            Your Digital Art
-          </LitText>
-        </Grid.Col>
-        <Grid.Col span={4} mt={"25px"}>
-          <SearchBar />
-        </Grid.Col>
-      </Grid>
-      <Grid
-        sx={{ backgroundColor: litColors.bg }}
-        columns={4}
-        px="16px"
-        pt="25px"
-        gutter={0}
-      >
-        <Grid.Col span={4}>
-          <FreshNFTItem
-            reservePriceEth="1.50 ETH"
-            reservePriceDollar="2,683.7"
-            status={"FRESH"}
-            nftImgUrl={""}
-            isLiked={false}
-            creator={{
-              firstName: "Pawel",
-              lastName: "Czerwinski",
-              designation: "Creator",
-              status: "ONLINE",
-              imgUrl: "asd",
-            }}
-          />
-        </Grid.Col>
+
+  const getLiveAuctionList = () => {
+    return (
+      <>
         <Grid.Col
           span={4}
           style={{
@@ -80,32 +24,12 @@ export const HomeIndex = () => {
           }}
           mt="85px"
         >
-          <LitText
-            color={litColors.titleActive}
-            screenType="mobile"
-            typographyVariant="display-bold"
-            size="sm"
-          >
-            {" "}
-            <Box
-              style={{
-                backgroundColor: litColors.error,
-                width: "12px",
-                height: "12px",
-                borderRadius: "50%",
-                display: "inline-block",
-              }}
-              mr="7px"
-            ></Box>
+          <LitText color={litColors.titleActive} screenType="mobile" typographyVariant="display-bold" size="sm">
+            <StatusCircle mr="7px" width={"12px"} color={litColors.error} />
             Live auctions
           </LitText>
           <LitButton variant="subtle" size="medium">
-            <LitText
-              color={litColors.label}
-              screenType="mobile"
-              typographyVariant="text"
-              size="md"
-            >
+            <LitText color={litColors.label} screenType="mobile" typographyVariant="text" size="md">
               View all
             </LitText>
           </LitButton>
@@ -120,9 +44,10 @@ export const HomeIndex = () => {
           }}
         >
           <SoldNFTItem
+            nftName="Silent Color"
             soldPrice="2.00 ETH"
             status={"SOLD"}
-            nftImgUrl={""}
+            nftImgUrl="NFT/SilentColor.png"
             isLiked={false}
             creator={{
               firstName: "Pawel",
@@ -133,9 +58,10 @@ export const HomeIndex = () => {
             }}
           />
           <SoldNFTItem
+            nftName="George"
             soldPrice="2.00 ETH"
             status={"SOLD"}
-            nftImgUrl={""}
+            nftImgUrl="NFT/George.png"
             isLiked={false}
             creator={{
               firstName: "Pawel",
@@ -145,10 +71,29 @@ export const HomeIndex = () => {
               imgUrl: "asd",
             }}
           />
-          <SoldNFTItem
-            soldPrice="2.00 ETH"
-            status={"SOLD"}
-            nftImgUrl={""}
+
+          <OnGoingBidNFTItem
+            nftName="Mirror"
+            status={"ONGOING-BID"}
+            currentBidPrice={"2.00 ETH"}
+            EndingIn={"27m 30s"}
+            nftImgUrl="NFT/Mirror.png"
+            isLiked={false}
+            creator={{
+              firstName: "Pawel",
+              lastName: "Czerwinski",
+              designation: "Creator",
+              status: "ONLINE",
+              imgUrl: "asd",
+            }}
+          />
+
+          <OnGoingBidNFTItem
+            nftName="Magic Mar"
+            status={"ONGOING-BID"}
+            currentBidPrice={"2.00 ETH"}
+            EndingIn={"27m 30s"}
+            nftImgUrl="NFT/MagicMar.png"
             isLiked={false}
             creator={{
               firstName: "Pawel",
@@ -159,10 +104,11 @@ export const HomeIndex = () => {
             }}
           />
           <OnGoingBidNFTItem
+            nftName="Shedd Aquarium"
             status={"ONGOING-BID"}
             currentBidPrice={"2.00 ETH"}
             EndingIn={"27m 30s"}
-            nftImgUrl={""}
+            nftImgUrl="NFT/SheddAquarium.png"
             isLiked={false}
             creator={{
               firstName: "Pawel",
@@ -173,10 +119,57 @@ export const HomeIndex = () => {
             }}
           />
         </Grid.Col>
+      </>
+    );
+  };
+
+  const getFreshNFTItem = () => {
+    return (
+      <Grid.Col span={4}>
+        <FreshNFTItem
+          nftName="Silent Wave"
+          reservePriceEth="1.50 ETH"
+          reservePriceDollar="2,683.7"
+          status={"FRESH"}
+          nftImgUrl="NFT/SilentWave.png"
+          isLiked={false}
+          creator={{
+            firstName: "Pawel",
+            lastName: "Czerwinski",
+            designation: "Creator",
+            status: "ONLINE",
+            imgUrl: "asd",
+          }}
+        />
+      </Grid.Col>
+    );
+  };
+
+  return (
+    <>
+      <Grid columns={4} mr="0" gutter={0} px="16px">
+        <Grid.Col span={4}>
+          <LitText mb={"4px"} align="center" screenType="desktop" component="div" typographyVariant="link" size="md" color={litColors.label}>
+            Discover, collect, and sell
+          </LitText>
+          <LitText screenType="desktop" align="center" component="div" typographyVariant="display-bold" size="sm" color={litColors.titleActive}>
+            Your Digital Art
+          </LitText>
+        </Grid.Col>
+        <Grid.Col span={4} mt={"25px"}>
+          <SearchBar />
+        </Grid.Col>
+      </Grid>
+      <Grid sx={{ backgroundColor: litColors.bg }} columns={4} px="16px" py="25px" gutter={0}>
+        {getFreshNFTItem()}
+        {getLiveAuctionList()}
+        <HotBids/>
+        <HotCollection/>
       </Grid>
     </>
   );
 };
+
 
 const createSearchBarStyles = createStyles((theme, focus: boolean) => ({
   input: {
@@ -211,9 +204,7 @@ const SearchBar = () => {
         rightSection={
           <UnstyledButton
             sx={{
-              display: `${
-                value && value?.trim().length >= 0 ? "block" : "none"
-              }`,
+              display: `${value && value?.trim().length >= 0 ? "block" : "none"}`,
             }}
             onClick={() => setValue("")}
           >

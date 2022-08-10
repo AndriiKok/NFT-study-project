@@ -165,7 +165,7 @@ const mobileTypography = {
     sm: {
       fontSize: "14px",
       lineHeight: "20x",
-      fontWeight: 400,
+      fontWeight: 500,
     },
     xs: {
       fontSize: "13px",
