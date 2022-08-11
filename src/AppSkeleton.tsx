@@ -17,6 +17,7 @@ import { LitText } from "./customComponents/Text/LitText";
 import { HomeIndex } from "./Pages/Home/HomeIndex";
 import { litColors } from "./theme/theme";
 import { Routes, Route, Link } from "react-router-dom";
+import { Profile } from "./customComponents/OpenArtTemplate/Profile";
 
 export const AppSkeleton = () => {
   const theme = useMantineTheme();
@@ -127,6 +128,7 @@ export const AppSkeleton = () => {
     >
       <Routes>
         <Route path="/" element={<HomeIndex />} />
+        <Route path="/test" element={<Profile firstName={""} lastName={""} status={"ONLINE"} designation={""} imgUrl={""} />} />
       </Routes>
     </AppShell>
   );

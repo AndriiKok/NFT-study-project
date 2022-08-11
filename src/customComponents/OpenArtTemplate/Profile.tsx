@@ -1,4 +1,4 @@
-import { Avatar } from "@mantine/core";
+import { Avatar, Indicator } from "@mantine/core";
 import { litColors } from "../../theme/theme";
 import { LitText } from "../Text/LitText";
 
@@ -18,20 +18,9 @@ export const Profile = (props: ProfileProps) => {
 
   return (
     <div style={{ display: "flex", gap: "10px" }}>
-      <div style={{ position: "relative" }}>
-        <Avatar src="profileImg.png" alt="Creator Name" radius="xl" />
-        <div
-          style={{
-            width: "12px",
-            height: "12px",
-            backgroundColor: statusCircleColor,
-            top: 0,
-            position: "absolute",
-            left: "30px",
-            borderRadius: "50%",
-          }}
-        ></div>
-      </div>
+      <Indicator size={8} color={statusCircleColor} position="top-end" offset={2} sx={{top: "25%"}}>
+        <Avatar src="profileImg.svg" alt="Creator Name" radius="xl" />
+      </Indicator>
       <div>
         <LitText
           screenType="desktop"
