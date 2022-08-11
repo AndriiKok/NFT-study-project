@@ -1,45 +1,73 @@
-import { Avatar, Indicator } from "@mantine/core";
+import {
+  Avatar,
+  Box,
+  Indicator,
+  Stack,
+  useComponentDefaultProps,
+} from "@mantine/core";
 import { litColors } from "../../theme/theme";
+import { Flex } from "../Flex";
 import { LitText } from "../Text/LitText";
 
 export interface ProfileProps {
   firstName: string;
-  lastName: string;
+  lastName?: string;
   status: "ONLINE" | "OFFLINE";
-  designation: string;
+  designation?: string;
   imgUrl: string;
 }
 
+const defaultProps: Partial<ProfileProps> = {
+  lastName: "",
+  designation: "",
+};
+
+const getLength = (val: string | undefined) => (val ? val.length : 0);
+
 export const Profile = (props: ProfileProps) => {
+  const { firstName, lastName, status, designation, imgUrl } =
+    useComponentDefaultProps("Profile", defaultProps, props);
+
   const statusCircleColor = {
     ONLINE: litColors.success,
     OFFLINE: litColors.placeholder,
   }[props.status];
 
+  const flexDirection =
+   ( getLength(lastName) > 0 || getLength(designation) > 0 ) ? "row" : "column";
+  const gap = flexDirection === "row" ? "10px" : "0";
+
   return (
-    <div style={{ display: "flex", gap: "10px" }}>
-      <Indicator size={8} color={statusCircleColor} position="top-end" offset={2} sx={{top: "25%"}}>
-        <Avatar src="profileImg.svg" alt="Creator Name" radius="xl" />
+    <Flex flexDirection={flexDirection} gap={gap} containerType="inline-flex">
+      <Indicator
+        size={12}
+        color={statusCircleColor}
+        position="top-end"
+        offset={8}
+      >
+        <Avatar src="profileImg.svg" alt="Creator Name" radius="xl" size={48} />
       </Indicator>
-      <div>
+      <Stack spacing={0} justify="center">
         <LitText
           screenType="desktop"
           typographyVariant="link"
           size="md"
           color={litColors.body}
         >
-          {props.firstName + " " + props.lastName}
+          {firstName + " " + lastName}
         </LitText>
-        <LitText
-          mt={"-5px"}
-          screenType="desktop"
-          size="xs"
-          variant="text"
-          color={litColors.label}
-        >
-          {props.designation}
-        </LitText>
-      </div>
-    </div>
+        {getLength(designation) > 0 && (
+          <LitText
+            mt={"-5px"}
+            screenType="desktop"
+            size="xs"
+            variant="text"
+            color={litColors.label}
+          >
+            {designation}
+          </LitText>
+        )}
+      </Stack>
+    </Flex>
   );
 };

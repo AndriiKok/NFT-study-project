@@ -128,7 +128,7 @@ export const AppSkeleton = () => {
     >
       <Routes>
         <Route path="/" element={<HomeIndex />} />
-        <Route path="/test" element={<Profile firstName={""} lastName={""} status={"ONLINE"} designation={""} imgUrl={""} />} />
+        <Route path="/test" element={<Profile firstName={"Kartik"}  status={"ONLINE"}  imgUrl={""} />} />
       </Routes>
     </AppShell>
   );

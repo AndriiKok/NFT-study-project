@@ -5,7 +5,6 @@ import {
   createStyles,
   useComponentDefaultProps,
 } from "@mantine/core";
-import React, { MouseEventHandler } from "react";
 
 interface LitButtonProps extends Omit<ButtonProps, "size" | "variant"> {
   variant: "primary" | "secondary" | "subtle" | "text";
@@ -65,7 +64,7 @@ const createButtonStyles = createStyles(
         outlineOffset: 0,
       },
       "&:hover": {
-        background: theme.fn.linearGradient(
+        background: theme.fn.linearGradient(                                                                               
           theme.other.litGradients.accent.deg,
           theme.other.litGradients.accent.from,
           theme.other.litGradients.accent.to
