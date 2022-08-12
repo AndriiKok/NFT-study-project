@@ -1,23 +1,12 @@
-import {
-  useMantineTheme,
-  AppShell,
-  Navbar,
-  MediaQuery,
-  Text,
-  Aside,
-  Footer,
-  Header,
-  Burger,
-  Box,
-  Stack,
-} from "@mantine/core";
+import { useMantineTheme, AppShell, Navbar, MediaQuery, Text, Aside, Footer, Header, Burger, Box, Stack } from "@mantine/core";
 import React, { useState } from "react";
 import { LitButton } from "./customComponents/Buttons/LitButton";
 import { LitText } from "./customComponents/Text/LitText";
 import { HomeIndex } from "./Pages/Home/HomeIndex";
 import { litColors } from "./theme/theme";
 import { Routes, Route, Link } from "react-router-dom";
-import { Profile } from "./customComponents/OpenArtTemplate/Profile";
+import { Profile, ProfileContainer } from "./customComponents/OpenArtTemplate/Profile";
+import { LitDivider } from "./customComponents/LitDivider";
 
 export const AppSkeleton = () => {
   const theme = useMantineTheme();
@@ -26,10 +15,7 @@ export const AppSkeleton = () => {
     <AppShell
       styles={{
         main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : litColors.offWhite,
+          background: theme.colorScheme === "dark" ? theme.colors.dark[8] : litColors.offWhite,
           paddingLeft: 0,
           paddingRight: "0 !important",
         },
@@ -37,58 +23,23 @@ export const AppSkeleton = () => {
       navbarOffsetBreakpoint="sm"
       asideOffsetBreakpoint="sm"
       navbar={
-        <Navbar
-          p="md"
-          hiddenBreakpoint="sm"
-          hidden={!opened}
-          width={{ sm: 200, lg: 300 }}
-          sx={{ justifyContent: "space-around" }}
-        >
+        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }} sx={{ justifyContent: "space-around" }}>
           <Stack spacing="xl" align="center">
-            <LitText
-              component="a"
-              screenType="desktop"
-              size="sm"
-              typographyVariant="display-bold"
-              href="https://google.com"
-            >
+            <LitText component="a" screenType="desktop" size="sm" typographyVariant="display-bold" href="https://google.com">
               About OpenArt
             </LitText>
-            <LitText
-              component="a"
-              screenType="desktop"
-              size="sm"
-              typographyVariant="display-bold"
-              href="https://google.com"
-            >
+            <LitText component="a" screenType="desktop" size="sm" typographyVariant="display-bold" href="https://google.com">
               Blog
             </LitText>
-            <LitText
-              component="a"
-              screenType="desktop"
-              size="sm"
-              typographyVariant="display-bold"
-              href="https://google.com"
-            >
+            <LitText component="a" screenType="desktop" size="sm" typographyVariant="display-bold" href="https://google.com">
               Help
             </LitText>
-            <LitText
-              component="a"
-              screenType="desktop"
-              size="sm"
-              typographyVariant="display-bold"
-              href="https://google.com"
-            >
+            <LitText component="a" screenType="desktop" size="sm" typographyVariant="display-bold" href="https://google.com">
               Contact
             </LitText>
           </Stack>
           <LitButton fullWidth={true} variant="primary" size="large">
-            <LitText
-              color="white"
-              typographyVariant="link"
-              screenType="mobile"
-              size="lg"
-            >
+            <LitText color="white" typographyVariant="link" screenType="mobile" size="lg">
               Connect wallet
             </LitText>
           </LitButton>
@@ -115,12 +66,7 @@ export const AppSkeleton = () => {
               <img src="OpenArtLogo.svg" alt="" />
             </Box>
             <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="sm"
-                color={theme.other.colors.titleActive}
-              />
+              <Burger opened={opened} onClick={() => setOpened((o) => !o)} size="sm" color={theme.other.colors.titleActive} />
             </MediaQuery>
           </div>
         </Header>
@@ -128,7 +74,13 @@ export const AppSkeleton = () => {
     >
       <Routes>
         <Route path="/" element={<HomeIndex />} />
-        <Route path="/test" element={<Profile firstName={"Kartik"}  status={"ONLINE"}  imgUrl={""} />} />
+        <Route path="/test" element={
+          <>
+          <LitDivider type="NORMAL" padded={true} />
+          
+          </>
+          
+          } />
       </Routes>
     </AppShell>
   );

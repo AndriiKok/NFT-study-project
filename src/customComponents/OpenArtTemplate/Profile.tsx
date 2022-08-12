@@ -34,7 +34,7 @@ export const Profile = (props: ProfileProps) => {
   }[props.status];
 
   const flexDirection =
-   ( getLength(lastName) > 0 || getLength(designation) > 0 ) ? "row" : "column";
+    getLength(lastName) > 0 || getLength(designation) > 0 ? "row" : "column";
   const gap = flexDirection === "row" ? "10px" : "0";
 
   return (
@@ -67,6 +67,41 @@ export const Profile = (props: ProfileProps) => {
             {designation}
           </LitText>
         )}
+      </Stack>
+    </Flex>
+  );
+};
+
+interface ProfileContainerProps {
+  children: React.ReactNode;
+  status: "ONLINE" | "OFFLINE";
+  imgUrl: string;
+  direction: "row" | "column";
+  gap: string;
+}
+
+export const ProfileContainer = (props: ProfileContainerProps) => {
+  const statusCircleColor = {
+    ONLINE: litColors.success,
+    OFFLINE: litColors.placeholder,
+  }[props.status];
+
+  return (
+    <Flex
+      flexDirection={props.direction}
+      gap={props.gap}
+      containerType="inline-flex"
+    >
+      <Indicator
+        size={12}
+        color={statusCircleColor}
+        position="top-end"
+        offset={8}
+      >
+        <Avatar src="profileImg.svg" alt="Creator Name" radius="xl" size={48} />
+      </Indicator>
+      <Stack spacing={0} justify="center">
+        {props.children}
       </Stack>
     </Flex>
   );
