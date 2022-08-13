@@ -35,6 +35,7 @@ const _LitText = (props: LitTextProps) => {
     gradientType,
     color,
     children,
+    sx,
     ...others
   } = useComponentDefaultProps("LitText", defaultProps, props);
 
@@ -47,7 +48,7 @@ const _LitText = (props: LitTextProps) => {
     <Text
       {...others}
       gradient={gradient}
-      sx={cssProps}
+      sx={{...cssProps,...sx}}
       color={color}
       variant={variantType}
     >

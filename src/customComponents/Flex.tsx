@@ -50,12 +50,6 @@ export const _Flex = (props: FlexProps) => {
     flexBasis,
     gap,
     flex,
-    padding,
-    margin,
-    width,
-    height,
-    maxWidth,
-    maxHeight,
     ...others
   } = props;
 
@@ -71,11 +65,6 @@ export const _Flex = (props: FlexProps) => {
         flexWrap: flexWrap || "nowrap",
         flex: flex || "0 1 auto",
         alignItems: alignItems || "unset",
-        margin: margin || "0",
-        padding: padding || "0",
-        width: width || "auto",
-        height: height || "auto",
-        maxWidth: maxWidth || "none",
         gap: gap || "0px"
       }}
       {...others}

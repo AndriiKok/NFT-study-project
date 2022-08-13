@@ -9,6 +9,7 @@ import {
 } from "../../customComponents/OpenArtTemplate/Profile";
 import { Heart } from "tabler-icons-react";
 import { Flex } from "../../customComponents/Flex";
+import { LitDivider } from "../../customComponents/LitDivider";
 
 export const HotCollection = () => {
   return (
@@ -115,7 +116,8 @@ export const HotCollection = () => {
           </LitButton>
         </Flex>
       </Grid.Col>
-      <LitButton fullWidth={true} variant={"secondary"} size="large" mb="25px">
+      <Grid.Col mb="25px">
+      <LitButton fullWidth={true} variant={"secondary"} size="large" >
         <LitText
           screenType="mobile"
           align="center"
@@ -126,6 +128,10 @@ export const HotCollection = () => {
           View more collection
         </LitText>
       </LitButton>
+     </Grid.Col>
+      <Grid.Col>
+        <LitDivider type="THIN" padded={true}  />
+      </Grid.Col>
     </>
   );
 };

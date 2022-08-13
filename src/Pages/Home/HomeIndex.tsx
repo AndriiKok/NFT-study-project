@@ -1,17 +1,29 @@
-import { ActionIcon, Box, createStyles, Grid, Group, Indicator, Stack, TextInput, UnstyledButton } from "@mantine/core";
-import React, { useState } from "react";
+import { createStyles, Grid, Group, TextInput, UnstyledButton } from "@mantine/core";
+import { useState } from "react";
 import { LitText } from "../../customComponents/Text/LitText";
 import { litColors } from "../../theme/theme";
-import { ArrowNarrowLeft, ArrowNarrowRight, Search, X } from "tabler-icons-react";
+import { Search, X } from "tabler-icons-react";
 import { LitButton } from "../../customComponents/Buttons/LitButton";
 import { FreshNFTItem, OnGoingBidNFTItem, SoldNFTItem } from "./NFTItem";
 import { StatusCircle } from "../../customComponents/OpenArtTemplate/StatusCircle";
-import { Carousel, Embla } from "@mantine/carousel";
 import { HotBids } from "./HotBids";
 import { HotCollection } from "./HotCollection";
+import { Image } from "@mantine/core";
+import { Flex } from "../../customComponents/Flex";
+import { Footer } from "./Footer";
 
+function Demo() {
+  return (
+    <div style={{ width: 240, marginLeft: "auto", marginRight: "auto" }}>
+      <Image
+        radius="md"
+        src="https://images.unsplash.com/photo-1511216335778-7cb8f49fa7a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
+        alt="Random unsplash image"
+      />
+    </div>
+  );
+}
 export const HomeIndex = () => {
-
   const getLiveAuctionList = () => {
     return (
       <>
@@ -147,7 +159,7 @@ export const HomeIndex = () => {
 
   return (
     <>
-      <Grid columns={4} mr="0" gutter={0} px="16px">
+      <Grid columns={4} mr="0" gutter={0} px="16px" py="16px">
         <Grid.Col span={4}>
           <LitText mb={"4px"} align="center" screenType="desktop" component="div" typographyVariant="link" size="md" color={litColors.label}>
             Discover, collect, and sell
@@ -163,13 +175,13 @@ export const HomeIndex = () => {
       <Grid sx={{ backgroundColor: litColors.bg }} columns={4} px="16px" py="25px" gutter={0}>
         {getFreshNFTItem()}
         {getLiveAuctionList()}
-        <HotBids/>
-        <HotCollection/>
+        <HotBids />
+        <HotCollection />
+        <Footer/>
       </Grid>
     </>
   );
 };
-
 
 const createSearchBarStyles = createStyles((theme, focus: boolean) => ({
   input: {
