@@ -8,6 +8,8 @@ import { Routes, Route, Link } from "react-router-dom";
 import { LitTextLink } from "./customComponents/Badges";
 import { ChartPie, CurrencyBitcoin, CurrencyEthereum, Star } from "tabler-icons-react";
 import { DetailIndex } from "./Pages/Detail/DetailIndex";
+import { PlaceBidModal } from "./Pages/Modals/PlaceBidModal";
+import { ConnectWalletModal } from "./Pages/Modals/ConnectWalletModal";
 
 export const AppSkeleton = () => {
   const theme = useMantineTheme();
@@ -82,11 +84,7 @@ export const AppSkeleton = () => {
           element={
             <>
               <Box sx={{ backgroundColor: litColors.bg, height: "300px", padding: "30px" }}>
-                <Stack spacing={16}>
-                  <LitTextLink leftIcon={<CurrencyBitcoin size={30} strokeWidth={2} color={litColors.body} />} text="View on Etherscan" />
-                  <LitTextLink leftIcon={<Star size={30} strokeWidth={2} color={litColors.body} />} text="View on IPFS" />
-                  <LitTextLink leftIcon={<ChartPie size={30} strokeWidth={2} color={litColors.body} />} text="View IPFS Metadata" />
-                </Stack>
+                <ConnectWalletModal/>
               </Box>
             </>
           }

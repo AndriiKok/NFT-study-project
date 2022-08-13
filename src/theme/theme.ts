@@ -184,6 +184,30 @@ const myTheme: MantineThemeOverride = {
       "#2A2A2A",
     ],
   },
+  components: {
+
+    Modal: {
+      styles: (theme) => ({
+        modal: {
+          /* padding: "20px 15px !important", */
+          borderRadius: "24px"
+        },
+        header: {
+          margin: 0,
+        },
+        close:{
+          alignSelf: "flex-start",
+          svg:{
+              width:"24px",
+              height: "24px",
+              stroke: theme.other.colors.label,
+              strokeWidth: 0.3,
+          }
+      }
+    })
+  }
+
+  },
   defaultRadius: "md",
   fontFamily: "Epilogue, sans-serif",
   fontFamilyMonospace: "Epilogue, sans-serif",
