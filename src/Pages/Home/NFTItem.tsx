@@ -13,7 +13,7 @@ interface NFTItemProps {
   nftImgUrl: string;
   isLiked: boolean;
   creator: ProfileProps;
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 interface FreshNFTItemProps extends Omit<NFTItemProps, "children"> {
@@ -124,12 +124,12 @@ export const OnGoingBidNFTItem = (props: OnGoingBidNFTItemProps) => {
   );
 };
 
-const NFTItem = (props: NFTItemProps) => {
+export const NFTItem = (props: NFTItemProps) => {
   return (
     <>
       <div>
         <Paper p="md" radius={32} sx={{ filter: "drop-shadow(0px 10px 24px rgba(0, 0, 0, 0.08))" }} mb="12px">
-          <Image src={props.nftImgUrl} alt="Silent Wave Image" />
+          <Image src={props.nftImgUrl} alt="Silent Wave Image" height={400} width={320} radius={24} />
           <LitText mt="12px" color={litColors.titleActive} screenType="mobile" typographyVariant="display-bold" size="sm">
             {props.nftName}
           </LitText>

@@ -26,7 +26,6 @@ const getBtnIcon = (icon: React.ReactNode) => (
       filter:
         "drop-shadow(0px 81px 106px rgba(0, 0, 0, 0.07)) drop-shadow(0px 10.1425px 13.2728px rgba(0, 0, 0, 0.0290085))",
     }}
-    variant="filled"
     size={40}
     radius={20}
   >
