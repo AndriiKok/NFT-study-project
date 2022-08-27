@@ -1,5 +1,5 @@
 import { Avatar, Box, Popover } from "@mantine/core";
-import React from "react";
+import React, { useId } from "react";
 import { Bell, User } from "tabler-icons-react";
 import { LitButton } from "../../customComponents/Buttons/LitButton";
 import { Flex } from "../../customComponents/Flex";
@@ -76,7 +76,7 @@ const notificationList = (notificationList: Notification[]) => {
   return (
     <Flex mt={15}>
       {notificationList.map((notification,index) => (
-        <>
+        <div  key={index}>
         <Flex containerType="flex" gap="16px">
           <Avatar src={notification.imgUrl} size={70} radius={16} />
           <Box>
@@ -92,7 +92,7 @@ const notificationList = (notificationList: Notification[]) => {
           </Box>
         </Flex>
           {  index < notificationList.length -1 && <LitDivider type="THIN" my={10} /> }
-         </>
+          </div>
       ))}
       
      
