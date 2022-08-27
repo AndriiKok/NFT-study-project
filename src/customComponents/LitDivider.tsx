@@ -1,8 +1,8 @@
-import { Divider } from '@mantine/core'
+import { DefaultProps, Divider } from '@mantine/core'
 import React from 'react'
 import { litColors } from '../theme/theme';
 
-interface LitDividerProps {
+interface LitDividerProps extends DefaultProps {
     type :"NORMAL" | "THIN" ;
     padded?: boolean;
     darkMode? : boolean;
@@ -17,7 +17,10 @@ const sizeMap = {
 
 
 export const LitDivider = (props: LitDividerProps) => {
+
+  const {type, padded, ...others } = props;
+
   return (
-   <Divider size={sizeMap[props.type]} color={litColors.line} mx={props.padded ? "6.5%" : "0%"} />
+   <Divider size={sizeMap[type]} color={litColors.line} mx={padded ? "6.5%" : "0%"} {...others} />
   )
 }

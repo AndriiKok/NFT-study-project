@@ -25,6 +25,7 @@ const _LitButton = (props: LitButtonProps) => {
     disabled,
     loading,
     type,
+    
     leftIcon,
     children,
     ...others
